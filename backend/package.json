@@ -6,6 +6,9 @@
   "repository": "https://github.com/CleytonRR/Quiz",
   "author": "Cleyton Furtado",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./src/index.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.1.0",

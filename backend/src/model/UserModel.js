@@ -11,13 +11,4 @@ const User = driver.define('user', {
   }
 })
 
-async function SyncDd (User) {
-  try {
-    User = await User.sync()
-    return User
-  } catch (error) {
-    console.error('Erro ao sincronizar: ' + error)
-  }
-}
-
 module.exports = User
