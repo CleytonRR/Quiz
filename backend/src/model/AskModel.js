@@ -16,9 +16,4 @@ const Ask = driver.define('ask', {
   }
 })
 
-function syncDb (db) {
-  db.sync()
-  return db
-}
-
 module.exports = Ask
