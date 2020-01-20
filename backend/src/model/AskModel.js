@@ -1,7 +1,7 @@
-const driver = require('../config/db')
+const driver = require('../config/db/driver')
 const sequelize = require('sequelize')
 
-const Ask = driver.define({
+const Ask = driver.define('ask', {
   ask: {
     type: sequelize.STRING,
     allowNull: false
@@ -16,9 +16,9 @@ const Ask = driver.define({
   }
 })
 
-function syncDb (table) {
-  table.sync()
-  return table
+function syncDb (db) {
+  db.sync()
+  return db
 }
 
-module.exports = syncDb(Ask)
+module.exports = Ask
