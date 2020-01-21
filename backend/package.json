@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha ./src/tests/userControllertest/*.test.js",
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
