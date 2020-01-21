@@ -8,18 +8,18 @@ var mockTest = {
 }
 
 var creationMock = {
-  name: 'Michal'
+  name: 'Maike'
 }
 
 describe('Test Suite of users', function () {
   it('POST/user -> ensure creation of user', async () => {
     const result = await request(api).post('/user').send(creationMock).set('Accept', 'applicatin/json')
-    assert.deepStrictEqual(creationMock.name, result.body[0].name)
+    assert.deepStrictEqual(creationMock.name, result.body.name)
     assert.deepStrictEqual(result.statusCode, 200)
   })
   it('POST/user -> ensure creation of  a user per name ', async () => {
     const result = await request(api).post('/user').send(mockTest).set('Accept', 'aplication/json')
-    assert.deepStrictEqual(mockTest.name, result.body[0].name)
+    assert.deepStrictEqual('this username is already used', result.body.message)
     assert.ok(result.statusCode === 200)
   })
   it('GET/user -> return a list(array) of users', async () => {

@@ -17,11 +17,11 @@ module.exports = {
           name
         }
       })
-      if (!response) {
+      if (response === null || response.length === 0) {
         const responseData = await User.create({ name })
         return res.json(responseData).status(200)
       }
-      return res.json(response).status(200)
+      return res.json({ message: 'this username is already used' }).status(200)
     } catch (error) {
       console.error('Erro ao salvar', +error)
     }
