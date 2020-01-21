@@ -22,7 +22,7 @@ describe('Test Suite of users', function () {
     assert.deepStrictEqual(mockTest.name, result.body[0].name)
     assert.ok(result.statusCode, 200)
   })
-  it.only('GET/user -> return a list(array) of users', async () => {
+  it('GET/user -> return a list(array) of users', async () => {
     const result = await request(api).get('/user')
     assert.deepStrictEqual(200, result.statusCode)
     assert.ok(Array.isArray(result.body), true)
