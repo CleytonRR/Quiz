@@ -17,8 +17,7 @@ module.exports = {
           ask
         }
       })
-
-      if (!responseData) {
+      if (responseData === null || responseData.length === 0) {
         const response = await Ask.create({
           ask,
           answer,
@@ -26,7 +25,7 @@ module.exports = {
         })
         return res.json(response).status(200)
       }
-      return res.json(responseData).status(200)
+      return res.json({ message: 'This question already exists!' }).status(200)
     } catch (error) {
       console.error('error saving question: ', +error)
     }
