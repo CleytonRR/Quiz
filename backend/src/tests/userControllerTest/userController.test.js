@@ -2,18 +2,29 @@
 const assert = require('assert')
 const request = require('supertest')
 const api = require('../../index')
+const User = require('../../model/UserModel')
 
 var mockTest = {
   name: 'Cleyton Rodrigues'
 }
 
 var creationMock = {
-  name: 'Maike'
+  name: 'MaryKay'
 }
 
+var id = ''
+
 describe('Test Suite of users', function () {
+  this.afterAll(function () {
+    User.destroy({
+      where: {
+        id
+      }
+    })
+  })
   it('POST/user -> ensure creation of user', async () => {
     const result = await request(api).post('/user').send(creationMock).set('Accept', 'applicatin/json')
+    id = result.body.id
     assert.deepStrictEqual(creationMock.name, result.body.name)
     assert.deepStrictEqual(result.statusCode, 200)
   })
