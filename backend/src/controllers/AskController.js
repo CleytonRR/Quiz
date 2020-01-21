@@ -12,12 +12,21 @@ module.exports = {
   async store (req, res) {
     const { ask, answer, choices } = req.body
     try {
-      const response = await Ask.create({
-        ask,
-        answer,
-        choices
+      const responseData = await Ask.findAll({
+        where: {
+          ask
+        }
       })
-      return res.json(response)
+
+      if (!responseData) {
+        const response = await Ask.create({
+          ask,
+          answer,
+          choices
+        })
+        return res.json(response).status(200)
+      }
+      return res.json(responseData).status(200)
     } catch (error) {
       console.error('error saving question: ', +error)
     }

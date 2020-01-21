@@ -21,9 +21,15 @@ describe('Suite test for Ask Controll', function () {
     assert.deepStrictEqual(askMock.ask, response.body[0].ask)
   })
 
-  it.only('POST/ask -> Ensure creation of new asks', async () => {
+  it('POST/ask -> Ensure creation of new asks', async () => {
     const response = await request(app).post('/ask').send(askMockCreate).set('Accept', 'applicatin/json')
     assert.deepStrictEqual(askMockCreate.ask, response.body.ask)
+    assert.ok(response.statusCode === 200)
+  })
+
+  it('POST/ask -> ensure that unique questions', async () => {
+    const response = await request(app).post('/ask').send(askMockCreate).set('Accept', 'application/json')
+    assert.deepStrictEqual(askMockCreate.ask, response.body[1].ask)
     assert.ok(response.statusCode === 200)
   })
 })

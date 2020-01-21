@@ -14,7 +14,7 @@ module.exports = {
     try {
       var response = await User.findAll({
         where: {
-          name: name
+          name
         }
       })
       if (!response) {
