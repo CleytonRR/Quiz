@@ -7,7 +7,7 @@
   "author": "Cleyton Furtado",
   "license": "MIT",
   "scripts": {
-    "test": "mocha ./src/tests/userControllertest/*.test.js",
+    "test": "mocha src/tests/userControllerTest/userController.test.js ",
     "dev": "nodemon ./src/server.js"
   },
   "dependencies": {

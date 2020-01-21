@@ -4,7 +4,7 @@ module.exports = {
   async show (req, res) {
     try {
       const response = await User.findAll()
-      res.json(response)
+      res.json(response).status(200)
     } catch (error) {
       console.error('Erro in find users', +error)
     }
@@ -13,7 +13,7 @@ module.exports = {
     const { name } = req.body
     try {
       const responseData = await User.create({ name })
-      return res.json(responseData)
+      return res.json(responseData).status(200)
     } catch (error) {
       console.error('Erro ao salvar', +error)
     }
