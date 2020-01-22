@@ -13,3 +13,14 @@ body, html, #app {
     max-width: 1200px;
     font-family: 'Roboto', Arial, sans-serif;
 }
+
+body {
+    background-color: #FFAE70;
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

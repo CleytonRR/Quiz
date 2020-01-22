@@ -1,12 +1,15 @@
 import React from 'react';
 import UserView from './components/Users/index'
 
-import './global.css'
+import './static/css/global.css'
 
 function App() {
 
   return (
-    <UserView />
+    <div id='app'>
+      <h1>Quiz matemático</h1>
+      <UserView />
+    </div>
   );
 }
 
