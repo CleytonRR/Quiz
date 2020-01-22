@@ -25,7 +25,7 @@ module.exports = {
         })
         return res.json(response).status(200)
       }
-      return res.json({ message: 'This question already exists!' }).status(400)
+      return res.status(400).json({ message: 'This question already exists!' })
     } catch (error) {
       console.error('error saving question: ', +error)
     }

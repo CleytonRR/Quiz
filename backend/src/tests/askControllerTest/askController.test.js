@@ -40,6 +40,6 @@ describe('Suite test for Ask Controll', function () {
   it('POST/ask -> ensure that unique questions', async () => {
     const response = await request(app).post('/ask').send(askMockCreate).set('Accept', 'application/json')
     assert.deepStrictEqual('This question already exists!', response.body.message)
-    assert.ok(response.statusCode === 200)
+    assert.ok(response.statusCode === 400)
   })
 })
