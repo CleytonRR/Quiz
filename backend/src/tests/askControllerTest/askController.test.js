@@ -5,7 +5,7 @@ const Ask = require('../../model/AskModel')
 const app = require('../../index')
 
 var askMock = {
-  ask: 'Quem criou o teorema de pitagoras'
+  ask: 'Quem criou o teorema de Pitágoras'
 }
 
 var askMockCreate = {
