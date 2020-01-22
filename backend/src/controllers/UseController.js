@@ -21,7 +21,7 @@ module.exports = {
         const responseData = await User.create({ name })
         return res.json(responseData).status(200)
       }
-      return res.json({ message: 'this username is already used' }).status(200)
+      return res.status(400).json({ message: 'this username is already used' })
     } catch (error) {
       console.error('Erro ao salvar', +error)
     }
