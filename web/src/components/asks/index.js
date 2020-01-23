@@ -17,7 +17,11 @@ function Ask() {
     }, [])
     function asnwerClick(e) {
         e.preventDefault()
-        console.log(e.target)
+        if(e.target.innerText === asks[e.target.value].answer) {
+            console.log('Deu certo')
+        } else {
+            console.log('Deu errado')
+        }
     }
 
     return (

@@ -24,7 +24,7 @@ function UserView() {
             <tbody>
                 {users.map(user => (
                     <tr key={user.id}>
-                        <td scope='row'>{user.id}</td>
+                        <th scope='row'>{user.id}</th>
                         <td>{user.name}</td>
                         <td>1</td>
                     </tr>
