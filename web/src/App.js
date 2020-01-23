@@ -1,6 +1,7 @@
 import React from 'react';
 import UserView from './components/Users/index'
-import { Jumbotron, Container } from 'react-bootstrap' 
+import FormCreation from './components/userForm/index'
+import { Jumbotron, Container, Row, Col } from 'react-bootstrap' 
 
 import './static/css/global.css'
 
@@ -10,7 +11,14 @@ function App() {
     <Container className='container-fluid'>
       <Jumbotron>
       <h1 className='text-center'>Quiz matemático</h1>
-      <UserView />
+      <Row>
+        <Col md={5}>
+          <FormCreation />
+        </Col>
+        <Col md={7}>
+          <UserView />
+        </Col>
+      </Row>
       </Jumbotron>
     </Container>
   );

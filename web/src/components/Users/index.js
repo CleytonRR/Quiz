@@ -31,13 +31,6 @@ function UserView() {
                 ))}
             </tbody>
         </table>
-        // <ul>
-        //     {users.map(user => (
-        //         <li key={user.id}>
-        //             <p>nome: {user.name}</p>
-        //         </li>
-        //     ))}
-        // </ul>
     )
   }
 
