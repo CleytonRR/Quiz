@@ -17,17 +17,17 @@ function Ask() {
     }, [])
     function asnwerClick(e) {
         e.preventDefault()
-        console.log(e.target.innerText)
+        console.log(e.target)
     }
 
     return (
         <Jumbotron fluid className='question'>
             <Form>
-                {asks.map(ask => (
+                {asks.map((ask, indexAsk) => (
                     <>
                         <h3 className='text-center' key={ask.id}>Quem descobriu o teorema de pitagoras</h3>
                         {ask.choices.split(',').map((choice,index) => (
-                            <Button key={index} variant="outline-primary" block onClick={asnwerClick}>{choice}</Button>
+                            <Button value={indexAsk} key={index} variant="outline-primary" block onClick={asnwerClick}>{choice}</Button>
                         ))}
                     </>
                 ))}
