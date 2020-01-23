@@ -15,13 +15,29 @@ function UserView() {
         loadUser()
     }, []) 
     return (
-        <ul>
-            {users.map(user => (
-                <li key={user.id}>
-                    <p>nome: {user.name}</p>
-                </li>
-            ))}
-        </ul>
+        <table className='table table-stripped table-dark'>
+            <thead>
+                <th scope="col">Posição</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Acertos</th>
+            </thead>
+            <tbody>
+                {users.map(user => (
+                    <tr key={user.id}>
+                        <th scope='row'>{user.id}</th>
+                        <td>{user.name}</td>
+                        <td>1</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+        // <ul>
+        //     {users.map(user => (
+        //         <li key={user.id}>
+        //             <p>nome: {user.name}</p>
+        //         </li>
+        //     ))}
+        // </ul>
     )
   }
 
