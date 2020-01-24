@@ -3,7 +3,7 @@ import UserView from '../Users/index'
 import FormCreation from '../userForm/index'
 import {Row, Col} from 'react-bootstrap'
 
-function InitialPage() {
+function InitialComponent() {
     return (
         <Row>
             <Col md={5}>
@@ -16,4 +16,4 @@ function InitialPage() {
     )
 }
 
-export default InitialPage
+export default InitialComponent
