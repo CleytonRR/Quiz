@@ -1,12 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import  InitalPage from './pages/initialPage/index'
-
-function Hello () {
-    return (
-        <h1>Oie</h1>
-    )
-}
+import AskPage from './pages/askPage/index'
 
 function Routes() {
     return (
@@ -16,7 +11,7 @@ function Routes() {
                     <InitalPage />
                 </Route> 
                 <Route path='/questions'>
-                    <Hello />
+                    <AskPage />
                 </Route>
             </Switch>
         </BrowserRouter>
