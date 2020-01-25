@@ -10,14 +10,11 @@ class FormCreation extends React.Component {
         }
     }
 
-
     att = (e) => {
         e.preventDefault()
         this.setState({
             rendering: !this.state.rendering
         })
-
-        console.log(this.state.rendering)
     }
 
     renderPage = () => {
