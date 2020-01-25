@@ -19,12 +19,10 @@ function Ask() {
     function asnwerClick(e) {
         e.preventDefault()
         if (e.target.innerText === asks[e.target.value].answer) {
-            console.log(e.target.innerText)
-            e.target.innerText = "Teste"
+            e.target.className = 'btn btn-success btn-block'
             setRendering(!rendering)
         } else {
-            console.log('Deu errado')
-            console.log(rendering)
+            e.target.className = 'btn btn-warning btn-block'
         }
     }
 
@@ -39,7 +37,7 @@ function Ask() {
                                 <Button
                                     value={indexAsk}
                                     key={index}
-                                    variant={rendering ? "danger" : "primary"}
+                                    variant="primary"
                                     block
                                     onClick={asnwerClick}>{choice}
                                 </Button>
