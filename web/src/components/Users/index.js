@@ -3,6 +3,8 @@ import api from '..//../services/api'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+import './styles.css'
+
 function UserView() {
     const [users, setUsers] = useState([])
 
@@ -13,25 +15,28 @@ function UserView() {
         }
 
         loadUser()
-    }, []) 
+    }, [])
     return (
-        <table className='table table-stripped table-dark'>
-            <thead>
-                <th scope="col">Posição</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Acertos</th>
-            </thead>
-            <tbody>
-                {users.map(user => (
-                    <tr key={user.id}>
-                        <th scope='row'>{user.id}</th>
-                        <td>{user.name}</td>
-                        <td>1</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <>
+            <h1 className='text-center ranking'>Ranking</h1>
+            <table className='table table-stripped table-dark'>
+                <thead>
+                    <th scope="col">Posição</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Acertos</th>
+                </thead>
+                <tbody>
+                    {users.map(user => (
+                        <tr key={user.id}>
+                            <th scope='row'>{user.id}</th>
+                            <td>{user.name}</td>
+                            <td>1</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </>
     )
-  }
+}
 
 export default UserView
