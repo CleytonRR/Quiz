@@ -5,6 +5,7 @@ const AskController = require('./controllers/AskController')
 const routes = Router()
 
 routes.post('/user', UserController.store)
+routes.get('/user/:name', UserController.showOne)
 routes.get('/user', UserController.show)
 routes.post('/ask', AskController.store)
 routes.get('/ask', AskController.show)

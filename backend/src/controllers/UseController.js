@@ -9,6 +9,23 @@ module.exports = {
       console.error('Erro in find users', +error)
     }
   },
+
+  async showOne (req, res) {
+    console.log(req.params.name)
+    try {
+      const response = await User.findOne({
+        where: {
+          name: req.params.name
+        }
+      })
+      if (Number(response) === 0) {
+        return res.status(200).json({ message: 'username ok' })
+      }
+      res.status(400).json({ message: 'Username already' })
+    } catch (error) {
+      console.error('Erro in find a user', +error)
+    }
+  },
   async store (req, res) {
     const { name } = req.body
     try {

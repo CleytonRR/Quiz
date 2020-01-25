@@ -31,7 +31,6 @@ describe('Test Suite of users', function () {
   it('POST/user -> ensure creation of  a user per name ', async () => {
     const result = await request(api).post('/user').send(mockTest).set('Accept', 'aplication/json')
     assert.deepStrictEqual('this username is already used', result.body.message)
-    console.log(result)
     assert.ok(result.statusCode === 400)
   })
   it('GET/user -> return a list(array) of users', async () => {
@@ -39,5 +38,13 @@ describe('Test Suite of users', function () {
     assert.deepStrictEqual(200, result.statusCode)
     assert.ok(Array.isArray(result.body) === true)
     assert.deepStrictEqual(mockTest.name, result.body[0].name)
+  })
+
+  it('GET/user:name -> verify if username already used', async () => {
+    const result = await request(api).get('/user/q')
+    console.log(result.statusCode)
+    console.log(result.body)
+    assert.deepStrictEqual(200, result.statusCode)
+    assert.deepStrictEqual('username ok', result.body.message)
   })
 })
