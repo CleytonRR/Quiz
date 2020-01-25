@@ -38,7 +38,7 @@ class FormCreation extends React.Component {
 
     renderWarning = () => {
         if (this.state.warning) {
-            return <small id='warning' className='form-text text-muted dangerText'>Nome de usuario ja utilizado</small>
+            return <span id='warning' className='redText'>Nome de usuario ja utilizado, escolha outro</span>
         }
     }
 
