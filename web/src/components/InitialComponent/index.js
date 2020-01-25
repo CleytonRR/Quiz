@@ -1,16 +1,21 @@
 import React from 'react'
 import UserView from '../Users/index'
 import FormCreation from '../userForm/index'
-import {Row, Col} from 'react-bootstrap'
+import Fade from 'react-reveal/Fade'
+import { Row, Col } from 'react-bootstrap'
 
 function InitialComponent() {
     return (
         <Row>
             <Col md={5}>
-                <FormCreation />
+                <Fade left big>
+                    <FormCreation />
+                </Fade>
             </Col>
             <Col md={7}>
-                <UserView />
+                <Fade right big>
+                    <UserView />
+                </Fade>
             </Col>
         </Row>
     )
