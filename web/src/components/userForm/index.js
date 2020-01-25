@@ -20,7 +20,6 @@ class FormCreation extends React.Component {
 
     att = async (e) => {
         e.preventDefault()
-        alert(this.state.input)
         try {
             const response = await api.get(`/user/${this.state.input}`)
             if (response.status === 200) {
