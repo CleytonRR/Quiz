@@ -61,7 +61,7 @@ class Ask extends React.Component {
             return (
                 <Bounce>
                     <Card>
-                        <Card.Body className="text-center text-primary">Obrigado por participar!</Card.Body>
+                        <Card.Body className="text-center text-primary finished-text">Obrigado por participar!</Card.Body>
                     </Card>
                 </Bounce>
             )
