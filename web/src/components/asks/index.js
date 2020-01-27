@@ -27,12 +27,16 @@ class Ask extends React.Component {
         this.loadApi()
     }
 
-    clickAnswer(e){
-        if(e.target.innerText === this.state.asks[this.state.atualQuestion].answer) {
+    clickAnswer(e) {
+        if (e.target.innerText === this.state.asks[this.state.atualQuestion].answer) {
             console.log('resposta certa')
         } else {
             console.log('errou')
         }
+
+        this.setState({
+            atualQuestion: this.state.atualQuestion + 1
+        })
     }
 
     shouldComponentUpdate() {
@@ -48,20 +52,15 @@ class Ask extends React.Component {
                 <Fade left big >
                     <Jumbotron fluid className='question'>
                         <Form>
-                            <h1>{this.state.asks[this.state.atualQuestion].ask}</h1>
-                            {this.state.asks.map((ask, index) => (
-                                <>
-                                    <h3 className='text-center' key={index}>{ask.ask}</h3>
-                                    {ask.choices.split(',').map((choice, index) => (
-                                        <Button
-                                            value={ask.id}
-                                            key={index}
-                                            variant="primary"
-                                            onClick={this.clickAnswer}
-                                            block>{choice}
-                                        </Button>
-                                    ))}
-                                </>
+                            <h3 className='text-center'>{this.state.asks[this.state.atualQuestion].ask}</h3>
+                            {this.state.asks[this.state.atualQuestion].choices.split(',').map((choice, index) => (
+                                <Button
+                                    key={index}
+                                    variant="primary"
+                                    onClick={this.clickAnswer}
+                                    block
+                                >{choice}
+                                </Button>
                             ))}
                         </Form>
                     </Jumbotron>
