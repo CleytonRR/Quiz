@@ -13,38 +13,15 @@ class Ask extends React.Component {
             asks: []
         }
     }
+
+    async loadApi() {
+        const response = await api.get('ask')
+        this.setState({
+            asks: response.data
+        })
+    }
     componentDidMount() {
-        async function getAsks() {
-            const response = await api.get('ask')
-            this.setState({
-                asks: response.data
-            })
-        }
-        if (this.state.asks === 0) {
-            console.log("Entrei aqui")
-            getAsks()
-        }
-    }
-
-    componentWillUnmount() {
-        if(this.state.asks){
-            
-        }
-    }
-
-    question() {
-        async function getAsks() {
-            const response = await api.get('ask')
-            this.setState({
-                asks: response.data
-            })
-        }
-        getAsks()
-        alert('oie')
-        console.log(this.state.asks)
-        return (
-            <h1>{this.state.asks[0].ask}</h1>
-        )
+        this.loadApi()
     }
 
     render() {
@@ -57,7 +34,7 @@ class Ask extends React.Component {
                         <Form>
                             {this.state.asks.map((ask, index) => (
                                 <>
-                                    <h3 className='text-center' key={index}>{this.question()}</h3>
+                                    <h3 className='text-center' key={index}>{ask.ask}</h3>
                                     {ask.choices.split(',').map((choice, index) => (
                                         <Button
                                             value={ask.id}
