@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../../services/api'
-import Fade from 'react-reveal/Fade'
-import { Button, Form, Jumbotron } from 'react-bootstrap'
+import { Fade, Bounce } from 'react-reveal'
+import { Button, Form, Jumbotron, Card } from 'react-bootstrap'
 
 import './styles.css'
 
@@ -12,7 +12,8 @@ class Ask extends React.Component {
         this.state = {
             asks: [],
             atualQuestion: 0,
-            correctAnswer: 0
+            correctAnswer: 0,
+            finished: false
         }
         this.clickAnswer = this.clickAnswer.bind(this)
     }
@@ -29,9 +30,12 @@ class Ask extends React.Component {
 
     clickAnswer(e) {
         if (e.target.innerText === this.state.asks[this.state.atualQuestion].answer) {
-            console.log('resposta certa')
+            alert('Correto')
+            this.setState({
+                correctAnswer: this.state.correctAnswer + 1
+            })
         } else {
-            console.log('errou')
+            alert("Errou")
         }
 
         this.setState({
@@ -40,13 +44,41 @@ class Ask extends React.Component {
     }
 
     shouldComponentUpdate() {
-        alert('Estou aqui antes de chamar a atualização')
+        if (this.state.atualQuestion === 1) {
+            this.setState({
+                finished: !this.setState.finished
+            })
+        }
         return true
     }
 
+    atualQuestionPossible() {
+        return this.state.atualQuestion
+    }
+
     render() {
+        if (this.atualQuestionPossible() === 2) {
+            return (
+                <Bounce>
+                    <Card>
+                        <Card.Body className="text-center text-primary">Obrigado por participar!</Card.Body>
+                    </Card>
+                </Bounce>
+            )
+        }
         if (this.state.asks === null || this.state.asks.length === 0) {
-            return <h1>Estou aqui</h1>
+            return (
+                <Bounce>
+                    <h1 className='text-center'>Carregando...</h1>
+                </Bounce>
+            )
+        }
+        if (this.state.finished === true) {
+            return (
+                <Bounce>
+                    <h1>Chegamos ao final, muito obrigado por participar!</h1>
+                </Bounce>
+            )
         } else {
             return (
                 <Fade left big >
