@@ -76,7 +76,7 @@ class Ask extends React.Component {
         if (this.state.finished === true) {
             return (
                 <Bounce>
-                    <h1>Chegamos ao final, muito obrigado por participar!</h1>
+                    <h1>Chegamos ao final, muito obrigado por participar! você acertou: {this.state.correctAnswer}</h1>
                 </Bounce>
             )
         } else {
