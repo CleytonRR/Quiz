@@ -10,8 +10,11 @@ class Ask extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            asks: []
+            asks: [],
+            atualQuestion: 0,
+            correctAnswer: 0
         }
+        this.clickAnswer = this.clickAnswer.bind(this)
     }
 
     async loadApi() {
@@ -24,6 +27,19 @@ class Ask extends React.Component {
         this.loadApi()
     }
 
+    clickAnswer(e){
+        if(e.target.innerText === this.state.asks[this.state.atualQuestion].answer) {
+            console.log('resposta certa')
+        } else {
+            console.log('errou')
+        }
+    }
+
+    shouldComponentUpdate() {
+        alert('Estou aqui antes de chamar a atualização')
+        return true
+    }
+
     render() {
         if (this.state.asks === null || this.state.asks.length === 0) {
             return <h1>Estou aqui</h1>
@@ -32,6 +48,7 @@ class Ask extends React.Component {
                 <Fade left big >
                     <Jumbotron fluid className='question'>
                         <Form>
+                            <h1>{this.state.asks[this.state.atualQuestion].ask}</h1>
                             {this.state.asks.map((ask, index) => (
                                 <>
                                     <h3 className='text-center' key={index}>{ask.ask}</h3>
@@ -40,6 +57,7 @@ class Ask extends React.Component {
                                             value={ask.id}
                                             key={index}
                                             variant="primary"
+                                            onClick={this.clickAnswer}
                                             block>{choice}
                                         </Button>
                                     ))}
