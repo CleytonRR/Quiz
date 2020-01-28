@@ -4,6 +4,7 @@ import { Fade, Bounce } from 'react-reveal'
 import { Button, Form, Jumbotron, Card } from 'react-bootstrap'
 
 import './styles.css'
+import { Redirect } from 'react-router-dom'
 
 
 class Ask extends React.Component {
@@ -66,6 +67,7 @@ class Ask extends React.Component {
                             Obrigado por participar! ! você acertou: {this.state.correctAnswer} perguntas
                         </Card.Body>
                     </Card>
+                    <Redirect to="/ranking" />
                 </Bounce>
             )
         }
