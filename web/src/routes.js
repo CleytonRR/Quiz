@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import  InitalPage from './pages/initialPage/index'
 import AskPage from './pages/askPage/index'
-import UserView from './components/Users/index'
+import RankingPage from './pages/rankingPage/index'
 
 function Routes() {
     return (
@@ -15,7 +15,7 @@ function Routes() {
                     <AskPage />
                 </Route>
                 <Route path='/ranking'>
-                    <UserView />
+                    <RankingPage />
                 </Route>
             </Switch>
         </BrowserRouter>
