@@ -44,7 +44,7 @@ class FormCreation extends React.Component {
 
     renderPage = () => {
         if (this.state.rendering) {
-            return <Redirect to="/questions" />
+            return <Redirect to={{pathname: "/questions", state: {name: this.state.input}}}/>
         }
     }
     render() {
