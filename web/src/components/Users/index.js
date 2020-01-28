@@ -11,6 +11,9 @@ function UserView() {
     useEffect(() => {
         async function loadUser() {
             const response = await api.get('user')
+            response.data.sort(function (a, b) {
+                return (a.count < b.count) ? 1 : ((b.count < a.count) ? -1 : 0)
+            })
             setUsers(response.data)
         }
 
@@ -26,11 +29,11 @@ function UserView() {
                     <th scope="col">Acertos</th>
                 </thead>
                 <tbody>
-                    {users.map(user => (
+                    {users.map((user, index) => (
                         <tr key={user.id}>
-                            <th scope='row'>{user.id}</th>
+                            <th scope='row'>{index + 1}</th>
                             <td>{user.name}</td>
-                            <td>1</td>
+                            <td>{user.count}</td>
                         </tr>
                     ))}
                 </tbody>
