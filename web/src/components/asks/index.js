@@ -61,7 +61,10 @@ class Ask extends React.Component {
             return (
                 <Bounce>
                     <Card>
-                        <Card.Body className="text-center text-primary finished-text">Obrigado por participar!</Card.Body>
+                        <Card.Body
+                            className="text-center text-primary finished-text">
+                            Obrigado por participar! ! você acertou: {this.state.correctAnswer} perguntas
+                        </Card.Body>
                     </Card>
                 </Bounce>
             )
@@ -73,13 +76,7 @@ class Ask extends React.Component {
                 </Bounce>
             )
         }
-        if (this.state.finished === true) {
-            return (
-                <Bounce>
-                    <h1>Chegamos ao final, muito obrigado por participar! você acertou: {this.state.correctAnswer}</h1>
-                </Bounce>
-            )
-        } else {
+        else {
             return (
                 <Fade left big >
                     <Jumbotron fluid className='question'>
