@@ -51,8 +51,7 @@ class FormCreation extends React.Component {
         if (this.state.rendering) {
             return <Redirect
                 to={{
-                    pathname: "/questions",
-                    state: { name: "cleyton" }
+                    pathname: "/questions"
                 }}
             />
 
@@ -60,7 +59,6 @@ class FormCreation extends React.Component {
     }
     render() {
 
-        const { newValue } = this.props
         return (
             <Jumbotron className='formParticipate'>
                 <h3>Participe</h3>

@@ -1,7 +1,10 @@
 import React from 'react'
 import api from '../../services/api'
 import { Fade, Bounce } from 'react-reveal'
-import { Button, Form, Jumbotron, Card } from 'react-bootstrap'
+import { Button, Form, Jumbotron } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { clickUpdate } from '../../actions'
+import { bindActionCreators } from 'redux'
 
 import './styles.css'
 import { Redirect } from 'react-router-dom'
@@ -59,6 +62,7 @@ class Ask extends React.Component {
 
     render() {
         if (this.atualQuestionPossible() === 2) {
+            clickUpdate(this.state.correctAnswer)
             return (
                 <Bounce>
                     <Redirect to="/ranking" />
@@ -96,4 +100,7 @@ class Ask extends React.Component {
     }
 }
 
-export default Ask
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ clickUpdate }, dispatch);
+
+export default connect(mapDispatchToProps)(Ask)
