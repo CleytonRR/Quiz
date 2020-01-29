@@ -7,7 +7,7 @@ class AskPage extends React.Component {
     constructor(props) {
         super(props)
     }
-
+    
     render() {
         return (
             <Container className='container-fluid'>
