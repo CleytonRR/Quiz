@@ -1,6 +1,9 @@
 import React from 'react'
 import api from '../../services/api'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { clickButton } from '../../actions'
+import { bindActionCreators } from 'redux'
 
 import './styles.css'
 import { Jumbotron } from 'react-bootstrap'
@@ -20,6 +23,7 @@ class FormCreation extends React.Component {
     }
 
     att = async (e) => {
+        const { clickButton } = this.props
         e.preventDefault()
         try {
             const response = await api.get(`/user/${this.state.input}`)
@@ -27,6 +31,7 @@ class FormCreation extends React.Component {
                 this.setState({
                     rendering: !this.state.rendering
                 })
+                clickButton(this.state.input)
             }
         } catch (error) {
             this.setState({
@@ -45,15 +50,17 @@ class FormCreation extends React.Component {
     renderPage = () => {
         if (this.state.rendering) {
             return <Redirect
-            to={{
-              pathname: "/questions",
-              state: { name: "cleyton" }
-            }}
-          />
-          
+                to={{
+                    pathname: "/questions",
+                    state: { name: "cleyton" }
+                }}
+            />
+
         }
     }
     render() {
+
+        const { newValue } = this.props
         return (
             <Jumbotron className='formParticipate'>
                 <h3>Participe</h3>
@@ -78,5 +85,12 @@ class FormCreation extends React.Component {
     }
 }
 
+const mapStateToProps = store => ({
+    newValue: store.name.newValue
+});
 
-export default FormCreation
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ clickButton }, dispatch);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormCreation)
