@@ -61,12 +61,6 @@ class Ask extends React.Component {
         if (this.atualQuestionPossible() === 2) {
             return (
                 <Bounce>
-                    <Card>
-                        <Card.Body
-                            className="text-center text-primary finished-text">
-                            Obrigado por participar! ! você acertou: {this.state.correctAnswer} perguntas
-                        </Card.Body>
-                    </Card>
                     <Redirect to="/ranking" />
                 </Bounce>
             )
