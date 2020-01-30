@@ -42,11 +42,11 @@ class UserView extends React.Component {
         this.loadUser()
     }
 
-    tableUser() {
+    tableUser(styleTable = '') {
         return (
             <>
                 <h1 className='text-center ranking'>Ranking</h1>
-                <table className='table table-stripped table-dark'>
+                <table className={`table table-stripped ${styleTable}`}>
                     <thead>
                         <th scope="col">Posição</th>
                         <th scope="col">Nome</th>
@@ -69,13 +69,13 @@ class UserView extends React.Component {
     render() {
         if (this.state.initialPag) {
             return (
-                this.tableUser()
+                this.tableUser('table-dark')
             )
         }
 
         if(!this.state.initialPag) {
             return (
-                this.tableUser()
+                this.tableUser('table-hover')
             )
         }
     }
