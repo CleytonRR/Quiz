@@ -10,15 +10,18 @@ class RankingPage extends React.Component {
             correct: this.props.correctAnswer,
             name: this.props.newValue
         }
-    }   
+    }
     render() {
         return (
-            <Container className='container-fluid'>
-                <Jumbotron>
-                    <h1>{`Nome: ${this.state.name} Acertou ${this.state.correct}`}</h1>
-                    <UserView />
-                </Jumbotron>
-            </Container>
+            <>
+                <Container className='container-fluid'>
+                    <Jumbotron>
+                        {this.state.name === '' ? '' : <p className='text-center text-success'>{`Nome: ${this.state.name} Acertou ${this.state.correct}`}</p>
+                        }
+                        <UserView />
+                    </Jumbotron>
+                </Container>
+            </>
         )
     }
 }
