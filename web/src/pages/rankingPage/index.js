@@ -3,6 +3,8 @@ import UserView from '../../components/Users/index'
 import { Container, Jumbotron } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
+import './styles.css'
+
 class RankingPage extends React.Component {
     constructor(props) {
         super(props)
@@ -16,7 +18,7 @@ class RankingPage extends React.Component {
             <>
                 <Container className='container-fluid'>
                     <Jumbotron>
-                        {this.state.name === '' ? '' : <p className='text-center text-success'>{`Nome: ${this.state.name} Acertou ${this.state.correct}`}</p>
+                        {this.state.name === '' ? '' : <p className='text-center text-success sucesso'>{`Nome: ${this.state.name} - Acertou: ${this.state.correct}`}</p>
                         }
                         <UserView />
                     </Jumbotron>
