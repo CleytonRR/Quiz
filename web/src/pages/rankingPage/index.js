@@ -1,5 +1,4 @@
 import React from 'react'
-import api from '../../services/api'
 import UserView from '../../components/Users/index'
 import { Container, Jumbotron } from 'react-bootstrap'
 import { connect } from 'react-redux'

@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '..//../services/api'
+import { connect } from 'react-redux'
 
 import './styles.css'
 
@@ -7,9 +8,25 @@ class UserView extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            users: []
+            users: [],
+            initialPag: true
         }
     }
+    async isCreate() {
+        const { newValue, correctAnswer } = this.props
+        if (newValue === '') {
+            return true
+        }
+        await api.post('/user', {
+            name: newValue,
+            count: correctAnswer
+        })
+        this.setState({
+            initialPag: !this.state.initialPag
+        })
+        this.loadUser()
+    }
+
     async loadUser() {
         const response = await api.get('user')
         response.data.sort(function (a, b) {
@@ -18,14 +35,14 @@ class UserView extends React.Component {
         this.setState({
             users: response.data
         })
-        alert('So chamei agora')
     }
 
     componentDidMount() {
+        this.isCreate()
         this.loadUser()
     }
 
-    render() {
+    tableUser() {
         return (
             <>
                 <h1 className='text-center ranking'>Ranking</h1>
@@ -49,6 +66,25 @@ class UserView extends React.Component {
         )
     }
 
+    render() {
+        if (this.state.initialPag) {
+            return (
+                this.tableUser()
+            )
+        }
+
+        if(!this.state.initialPag) {
+            return (
+                this.tableUser()
+            )
+        }
+    }
+
 }
 
-export default UserView
+const mapStateToProps = store => ({
+    correctAnswer: store.correct.correctAsnwer,
+    newValue: store.name.newValue
+});
+
+export default connect(mapStateToProps)(UserView)
