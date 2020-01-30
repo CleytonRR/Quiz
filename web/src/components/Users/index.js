@@ -18,6 +18,7 @@ class UserView extends React.Component {
         this.setState({
             users: response.data
         })
+        alert('So chamei agora')
     }
 
     componentDidMount() {

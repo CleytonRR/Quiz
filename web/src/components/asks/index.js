@@ -22,6 +22,15 @@ class Ask extends React.Component {
         this.clickAnswer = this.clickAnswer.bind(this)
     }
 
+    async isCreate(correctAsk) {
+        const {newValue } = this.props
+        await api.post('/user', {
+            name: newValue,
+            count: correctAsk
+        })
+        alert("Terminei a criação")
+    }
+
     async loadApi() {
         const response = await api.get('ask')
         this.setState({
@@ -62,9 +71,11 @@ class Ask extends React.Component {
 
     render() {
 
-        const { correct, clickUpdate } = this.props
+        const { clickUpdate } = this.props
         if (this.atualQuestionPossible() === 2) {
             clickUpdate(this.state.correctAnswer)
+            this.isCreate(this.state.correctAnswer)
+            alert('Criei')
             return (
                 <Bounce>
                     <Redirect to="/ranking" />
@@ -103,7 +114,8 @@ class Ask extends React.Component {
 }
 
 const mapStateToProps = store => ({
-    correct: store.correct.correctAsnwer
+    correctAnswer: store.correct.correctAsnwer,
+    newValue: store.name.newValue
 });
 
 const mapDispatchToProps = dispatch =>

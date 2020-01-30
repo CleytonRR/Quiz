@@ -1,16 +1,22 @@
 import React from 'react'
+import api from '../../services/api'
 import UserView from '../../components/Users/index'
 import { Container, Jumbotron } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class RankingPage extends React.Component {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            correct: this.props.correctAnswer,
+            name: this.props.newValue
+        }
+    }   
     render() {
-        const { correctAnswer } = this.props
         return (
             <Container className='container-fluid'>
                 <Jumbotron>
-                    <h1>{`Acertou ${correctAnswer}`}</h1>
+                    <h1>{`Nome: ${this.state.name} Acertou ${this.state.correct}`}</h1>
                     <UserView />
                 </Jumbotron>
             </Container>
@@ -19,7 +25,8 @@ class RankingPage extends React.Component {
 }
 
 const mapStateToProps = store => ({
-    correctAnswer: store.correct.correctAsnwer
+    correctAnswer: store.correct.correctAsnwer,
+    newValue: store.name.newValue
 });
 
 export default connect(mapStateToProps)(RankingPage)
