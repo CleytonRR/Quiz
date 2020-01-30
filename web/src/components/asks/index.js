@@ -61,6 +61,8 @@ class Ask extends React.Component {
     }
 
     render() {
+
+        const { correct, clickUpdate } = this.props
         if (this.atualQuestionPossible() === 2) {
             clickUpdate(this.state.correctAnswer)
             return (
@@ -100,7 +102,11 @@ class Ask extends React.Component {
     }
 }
 
+const mapStateToProps = store => ({
+    correct: store.correct.correctAsnwer
+});
+
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ clickUpdate }, dispatch);
 
-export default connect(mapDispatchToProps)(Ask)
+export default connect(mapStateToProps, mapDispatchToProps)(Ask)
