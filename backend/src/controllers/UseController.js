@@ -27,7 +27,7 @@ module.exports = {
     }
   },
   async store (req, res) {
-    const { name } = req.body
+    const { name, count } = req.body
     try {
       var response = await User.findAll({
         where: {
@@ -35,7 +35,7 @@ module.exports = {
         }
       })
       if (response === null || response.length === 0) {
-        const responseData = await User.create({ name })
+        const responseData = await User.create({ name, count })
         return res.json(responseData).status(200)
       }
       return res.status(400).json({ message: 'this username is already used' })
