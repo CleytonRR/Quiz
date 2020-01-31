@@ -18,7 +18,7 @@ class RankingPage extends React.Component {
             <>
                 <Container className='container-fluid'>
                     <Jumbotron>
-                        {this.state.name === '' ? '' : <p className='text-center text-success sucesso'>{`Nome: ${this.state.name} - Acertou: ${this.state.correct}`}</p>
+                        {this.state.name === '' ? '' : <p className='text-center text-success sucesso'>{`Parabéns ${this.state.name} você Acertou: ${this.state.correct}`}</p>
                         }
                         <UserView />
                     </Jumbotron>

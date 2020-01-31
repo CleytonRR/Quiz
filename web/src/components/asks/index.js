@@ -5,6 +5,7 @@ import { Button, Form, Jumbotron } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { clickUpdate } from '../../actions'
 import { bindActionCreators } from 'redux'
+import { useAlert } from 'react-alert'
 
 import './styles.css'
 import { Redirect } from 'react-router-dom'
@@ -21,12 +22,14 @@ class Ask extends React.Component {
         }
         this.clickAnswer = this.clickAnswer.bind(this)
     }
-    
+
     async loadApi() {
-        const response = await api.get('ask')
-        this.setState({
-            asks: response.data
-        })
+        if(this.state.asks === null || this.state.asks.length === 0) {
+            const response = await api.get('ask')
+            this.setState({
+                asks: response.data
+            })
+        }
     }
     componentDidMount() {
         this.loadApi()
