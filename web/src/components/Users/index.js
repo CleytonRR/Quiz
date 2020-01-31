@@ -9,7 +9,8 @@ class UserView extends React.Component {
         super(props)
         this.state = {
             users: [],
-            initialPag: true
+            initialPag: true,
+            failDb = false
         }
     }
     async isCreate() {
@@ -17,24 +18,38 @@ class UserView extends React.Component {
         if (newValue === '') {
             return true
         }
-        await api.post('/user', {
-            name: newValue,
-            count: correctAnswer
-        })
-        this.setState({
-            initialPag: !this.state.initialPag
-        })
+        try {
+            await api.post('/user', {
+                name: newValue,
+                count: correctAnswer
+            })
+            this.setState({
+                initialPag: !this.state.initialPag
+            })
+        } catch (error) {
+            console.error('Erro ao salvar')
+            this.setState({
+                failDb: !this.state.failDb
+            })
+        }
         this.loadUser()
     }
 
     async loadUser() {
-        const response = await api.get('user')
-        response.data.sort(function (a, b) {
-            return (a.count < b.count) ? 1 : ((b.count < a.count) ? -1 : 0)
-        })
-        this.setState({
-            users: response.data
-        })
+        try {            
+            const response = await api.get('user')
+            response.data.sort(function (a, b) {
+                return (a.count < b.count) ? 1 : ((b.count < a.count) ? -1 : 0)
+            })
+            this.setState({
+                users: response.data
+            })
+        } catch (error) {
+            console.error('Erro ao chamar')
+            this.setState({
+                failDb: !this.state.failDb
+            })
+        }
     }
 
     componentDidMount() {
@@ -69,6 +84,11 @@ class UserView extends React.Component {
     }
 
     render() {
+        if(this.state.failDb) {
+            return (
+                <p>Erro interno no servidor, tente novamente mais tarde</p>
+            )
+        }
         if (this.state.initialPag) {
             return (
                 this.tableUser('table-dark')

@@ -18,16 +18,24 @@ class Ask extends React.Component {
             asks: [],
             atualQuestion: 0,
             correctAnswer: 0,
-            finished: false
+            finished: false,
+            failDb: false
         }
         this.clickAnswer = this.clickAnswer.bind(this)
     }
 
     async loadApi() {
-        if(this.state.asks === null || this.state.asks.length === 0) {
-            const response = await api.get('ask')
+        try {
+            if(this.state.asks === null || this.state.asks.length === 0) {
+                const response = await api.get('ask')
+                this.setState({
+                    asks: response.data
+                })
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar questões')
             this.setState({
-                asks: response.data
+                faildDb: !this.state.failDb
             })
         }
     }
@@ -66,6 +74,11 @@ class Ask extends React.Component {
     render() {
 
         const { clickUpdate } = this.props
+        if(this.state.failDb) {
+            return (
+                <p>Error no servidor: tente novamente mais tarde</p>
+            )
+        }
         if (this.atualQuestionPossible() === 2) {
             clickUpdate(this.state.correctAnswer)
             return (
