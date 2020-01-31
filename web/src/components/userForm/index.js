@@ -74,7 +74,7 @@ class FormCreation extends React.Component {
                         <small id='nameUser' className='form-text text-muted'>Insira seu nome para iniciar o desafio</small>
                         <div>{this.renderWarning()}</div>
                     </div>
-                    <button type="submit" onClick={this.att} class="btn btn-primary">Começar</button>
+                    <button type="submit" onClick={this.att} className="btn btn-primary">Começar</button>
                     <div>{this.renderPage()}</div>
                 </form>
             </Jumbotron>

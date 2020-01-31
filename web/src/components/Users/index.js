@@ -48,9 +48,11 @@ class UserView extends React.Component {
                 <h1 className='text-center ranking'>Ranking</h1>
                 <table className={`table table-stripped ${styleTable}`}>
                     <thead>
-                        <th scope="col">Posição</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Acertos</th>
+                        <tr>
+                            <th scope="col">Posição</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Acertos</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {this.state.users.map((user, index) => (
@@ -73,7 +75,7 @@ class UserView extends React.Component {
             )
         }
 
-        if(!this.state.initialPag) {
+        if (!this.state.initialPag) {
             return (
                 this.tableUser('table-hover')
             )
