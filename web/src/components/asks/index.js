@@ -5,7 +5,6 @@ import { Button, Form, Jumbotron } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { clickUpdate } from '../../actions'
 import { bindActionCreators } from 'redux'
-import { useAlert } from 'react-alert'
 
 import './styles.css'
 import { Redirect } from 'react-router-dom'
