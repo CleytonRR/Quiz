@@ -9,7 +9,8 @@
   "scripts": {
     "testUser": "mocha src/tests/userControllerTest/*.test.js",
     "testAsk": "mocha src/tests/askControllerTest/*.test.js",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
