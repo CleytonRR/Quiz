@@ -10,7 +10,7 @@ class UserView extends React.Component {
         this.state = {
             users: [],
             initialPag: true,
-            failDb = false
+            failDb: false
         }
     }
     async isCreate() {
