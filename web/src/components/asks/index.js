@@ -78,7 +78,7 @@ class Ask extends React.Component {
                 <p>Error no servidor: tente novamente mais tarde</p>
             )
         }
-        if (this.atualQuestionPossible() === 2) {
+        if (this.atualQuestionPossible() === 10) {
             clickUpdate(this.state.correctAnswer)
             return (
                 <Bounce>
