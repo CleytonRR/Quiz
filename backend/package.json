@@ -23,7 +23,7 @@
   "devDependencies": {
     "mocha": "^10.2.0",
     "request": "^2.88.0",
-    "standard": "^14.3.1",
+    "standard": "^17.1.0",
     "supertest": "^4.0.2"
   }
 }
